@@ -14,7 +14,7 @@ int main() {
     {Actions[2], "Scissors"}
   };
 
-  std::string const usage{"\'" + std::string{Actions[0]} + "\' - " + Names[Actions[0]] + "\n"
+  std::string const Usage{"\'" + std::string{Actions[0]} + "\' - " + Names[Actions[0]] + "\n"
                           "\'" + std::string{Actions[1]} + "\' - " + Names[Actions[1]] + "\n"
                           "\'" + std::string{Actions[2]} + "\' - " + Names[Actions[2]] + "\n"
                           "\'c\' - display score\n"
@@ -33,8 +33,7 @@ int main() {
                   {Actions[2], [&]() -> void {std::cout << "Draw"     << std::endl; Draws++;      }}}}
   };
 
-  std::cout << "Let's play Paper, Rock, Scissors\nUsage:\n" << usage << std::endl;
-  std::cout << ">> ";
+  std::cout << "Let's play Paper, Rock, Scissors\nUsage:\n" << Usage << "\n>> ";
   while (true) {
     if (std::cin.peek() == '\n') {
       std::cin.ignore();
@@ -53,7 +52,7 @@ int main() {
         } else if (input == "c") {
           std::cout << "Player wins\tComputer wins\tDraws\n" << Player_wins << "\t\t" << CPU_wins << "\t\t" << Draws << std::endl;
         } else if (input == "h") {
-          std::cout << usage << std::endl;
+          std::cout << Usage << std::endl;
         } else if (input == "q") {
           std::cout << "Player wins\tComputer wins\tDraws\n" << Player_wins << "\t\t" << CPU_wins << "\t\t" << Draws << std::endl;
           break;
