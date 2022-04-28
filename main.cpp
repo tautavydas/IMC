@@ -6,31 +6,31 @@ int main() {
   srand(time(0));
   size_t Draws{0}, CPU_wins{0}, Player_wins{0};
 
-  std::string const actions{"prs"};
+  std::string const Actions{"prs"};
 
   std::unordered_map<char, std::string const> Names {
-    {actions[0], "Paper"   },
-    {actions[1], "Rock"    },
-    {actions[2], "Scissors"}
+    {Actions[0], "Paper"   },
+    {Actions[1], "Rock"    },
+    {Actions[2], "Scissors"}
   };
 
-  std::string const usage{"\'" + std::string{actions[0]} + "\' - " + Names[actions[0]] + "\n"
-                          "\'" + std::string{actions[1]} + "\' - " + Names[actions[1]] + "\n"
-                          "\'" + std::string{actions[2]} + "\' - " + Names[actions[2]] + "\n"
+  std::string const usage{"\'" + std::string{Actions[0]} + "\' - " + Names[Actions[0]] + "\n"
+                          "\'" + std::string{Actions[1]} + "\' - " + Names[Actions[1]] + "\n"
+                          "\'" + std::string{Actions[2]} + "\' - " + Names[Actions[2]] + "\n"
                           "\'c\' - display score\n"
                           "\'q\' - quit\n"
                           "\'h\' - help"};
 
   std::unordered_map<char, std::unordered_map<char, std::function<void()>>> Game {
-    {actions[0], {{actions[0], [&]() -> void {std::cout << "Draw"     << std::endl; Draws++;      }},
-                  {actions[1], [&]() -> void {std::cout << "You win"  << std::endl; Player_wins++;}},
-                  {actions[2], [&]() -> void {std::cout << "CPU wins" << std::endl; CPU_wins++;   }}}},
-    {actions[1], {{actions[0], [&]() -> void {std::cout << "CPU wins" << std::endl; CPU_wins++;   }},
-                  {actions[1], [&]() -> void {std::cout << "Draw"     << std::endl; Draws++;      }},
-                  {actions[2], [&]() -> void {std::cout << "You win"  << std::endl; Player_wins++;}}}},
-    {actions[2], {{actions[0], [&]() -> void {std::cout << "You win"  << std::endl; Player_wins++;}},
-                  {actions[1], [&]() -> void {std::cout << "CPU wins" << std::endl; CPU_wins++;   }},
-                  {actions[2], [&]() -> void {std::cout << "Draw"     << std::endl; Draws++;      }}}}
+    {Actions[0], {{Actions[0], [&]() -> void {std::cout << "Draw"     << std::endl; Draws++;      }},
+                  {Actions[1], [&]() -> void {std::cout << "You win"  << std::endl; Player_wins++;}},
+                  {Actions[2], [&]() -> void {std::cout << "CPU wins" << std::endl; CPU_wins++;   }}}},
+    {Actions[1], {{Actions[0], [&]() -> void {std::cout << "CPU wins" << std::endl; CPU_wins++;   }},
+                  {Actions[1], [&]() -> void {std::cout << "Draw"     << std::endl; Draws++;      }},
+                  {Actions[2], [&]() -> void {std::cout << "You win"  << std::endl; Player_wins++;}}}},
+    {Actions[2], {{Actions[0], [&]() -> void {std::cout << "You win"  << std::endl; Player_wins++;}},
+                  {Actions[1], [&]() -> void {std::cout << "CPU wins" << std::endl; CPU_wins++;   }},
+                  {Actions[2], [&]() -> void {std::cout << "Draw"     << std::endl; Draws++;      }}}}
   };
 
   std::cout << "Let's play Paper, Rock, Scissors\nUsage:\n" << usage << std::endl;
@@ -45,10 +45,9 @@ int main() {
       if (input.length()==1) {
         auto const iter1{Game.find(input.c_str()[0])};
         if (iter1!=Game.end()) {
-          size_t const ran{rand() % actions.length()};
-          auto const iter2{iter1->second.find(actions[ran])};
+          auto const iter2{iter1->second.find(Actions[rand() % Actions.length()])};
           if (iter2 != iter1->second.end()) {
-            std::cout << "You : " << Names[iter1->first] << "\tCPU : " << Names[actions[ran]] << std::endl;
+            std::cout << "You : " << Names[iter1->first] << "\tCPU : " << Names[iter2->first] << std::endl;
             iter2->second();
           } else std::cout << "Map key not found" << std::endl;
         } else if (input == "c") {
