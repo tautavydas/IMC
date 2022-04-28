@@ -22,15 +22,15 @@ int main() {
                           "\'h\' - help"};
 
   std::unordered_map<char, std::unordered_map<char, std::function<void()>>> Game {
-    {actions[0], {{actions[0], [&]() -> void { std::cout << "Draw"     << std::endl; Draws++;      }},
-                  {actions[1], [&]() -> void { std::cout << "You win"  << std::endl; Player_wins++;}},
-                  {actions[2], [&]() -> void { std::cout << "CPU wins" << std::endl; CPU_wins++;   }}}},
-    {actions[1], {{actions[0], [&]() -> void { std::cout << "CPU wins" << std::endl; CPU_wins++;   }},
-                  {actions[1], [&]() -> void { std::cout << "Draw"     << std::endl; Draws++;      }},
-                  {actions[2], [&]() -> void { std::cout << "You win"  << std::endl; Player_wins++;}}}},
-    {actions[2], {{actions[0], [&]() -> void { std::cout << "You win"  << std::endl; Player_wins++;}},
-                  {actions[1], [&]() -> void { std::cout << "CPU wins" << std::endl; CPU_wins++;   }},
-                  {actions[2], [&]() -> void { std::cout << "Draw"     << std::endl; Draws++;      }}}}
+    {actions[0], {{actions[0], [&]() -> void {std::cout << "Draw"     << std::endl; Draws++;      }},
+                  {actions[1], [&]() -> void {std::cout << "You win"  << std::endl; Player_wins++;}},
+                  {actions[2], [&]() -> void {std::cout << "CPU wins" << std::endl; CPU_wins++;   }}}},
+    {actions[1], {{actions[0], [&]() -> void {std::cout << "CPU wins" << std::endl; CPU_wins++;   }},
+                  {actions[1], [&]() -> void {std::cout << "Draw"     << std::endl; Draws++;      }},
+                  {actions[2], [&]() -> void {std::cout << "You win"  << std::endl; Player_wins++;}}}},
+    {actions[2], {{actions[0], [&]() -> void {std::cout << "You win"  << std::endl; Player_wins++;}},
+                  {actions[1], [&]() -> void {std::cout << "CPU wins" << std::endl; CPU_wins++;   }},
+                  {actions[2], [&]() -> void {std::cout << "Draw"     << std::endl; Draws++;      }}}}
   };
 
   std::cout << "Let's play Paper, Rock, Scissors\nUsage:\n" << usage << std::endl;
