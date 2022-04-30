@@ -41,7 +41,7 @@ class Game {
 
   bool Play(char const player_action, char const computer_action) {
     auto const iter1{game.find(player_action)};
-    if (iter1!=game.end()) {
+    if (iter1 != game.end()) {
       auto const iter2{iter1->second.find(computer_action)};
       if (iter2 != iter1->second.end()) {
         std::cout << "You : " << names[iter1->first] << "\tCPU : " << names[iter2->first] << "\t--->\t";
