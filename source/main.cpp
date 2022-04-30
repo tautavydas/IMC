@@ -14,16 +14,16 @@ int main() {
       std::cin.ignore();
       std::cout << ">> ";
     } else {
-      std::string player_input;
-      std::cin >> player_input;
-      if (player_input.length()==1) {
-        if (RockPaperScissors.Play(player_input[0], RockPaperScissors.ComputerAction())) {
-        } else if (player_input == "d") {
-          RockPaperScissors.DisplayScore();
-        } else if (player_input == "h") {
+      std::string PlayerInput;
+      std::cin >> PlayerInput;
+      if (PlayerInput.length()==1) {
+        if (RockPaperScissors.Play(PlayerInput[0], RockPaperScissors.ComputerInput())) {
+        } else if (PlayerInput == "d") {
+          std::cout << RockPaperScissors.DisplayScore() << std::endl;
+        } else if (PlayerInput == "h") {
           std::cout << Usage << std::endl;
-        } else if (player_input == "q") {
-          RockPaperScissors.DisplayScore();
+        } else if (PlayerInput == "q") {
+          std::cout << RockPaperScissors.DisplayScore() << std::endl;
           break;
         } else {
           std::cout << "wrong command" << std::endl;

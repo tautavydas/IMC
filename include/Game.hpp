@@ -53,12 +53,12 @@ class Game {
     return false;
   }
 
-  char ComputerAction() const {
+  char ComputerInput() const {
     return Actions[rand() % Actions.length()];
   }
 
-  void DisplayScore() const {
-    std::cout << "Player wins\tComputer wins\tDraws\n" << Player_wins << "\t\t" << CPU_wins << "\t\t" << Draws << std::endl;
+  std::string DisplayScore() const {
+    return "Player wins\tComputer wins\tDraws\n" + std::to_string(Player_wins) + "\t\t" + std::to_string(CPU_wins) + "\t\t" + std::to_string(Draws);
   }
 
  private:

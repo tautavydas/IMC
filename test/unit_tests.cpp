@@ -9,13 +9,13 @@ BOOST_AUTO_TEST_SUITE(Tests)
   BOOST_AUTO_TEST_CASE(Test_Inputs) {
     Game RockPaperScissors;
 
-    BOOST_CHECK_EQUAL(RockPaperScissors.Play('p', RockPaperScissors.ComputerAction()), true);
-    BOOST_CHECK_EQUAL(RockPaperScissors.Play('r', RockPaperScissors.ComputerAction()), true);
-    BOOST_CHECK_EQUAL(RockPaperScissors.Play('s', RockPaperScissors.ComputerAction()), true);
-    BOOST_CHECK_EQUAL(RockPaperScissors.Play('P', RockPaperScissors.ComputerAction()), false);
-    BOOST_CHECK_EQUAL(RockPaperScissors.Play('R', RockPaperScissors.ComputerAction()), false);
-    BOOST_CHECK_EQUAL(RockPaperScissors.Play('S', RockPaperScissors.ComputerAction()), false);
-    BOOST_CHECK_EQUAL(RockPaperScissors.Play('q', RockPaperScissors.ComputerAction()), false);
+    BOOST_CHECK_EQUAL(RockPaperScissors.Play('p', RockPaperScissors.ComputerInput()), true);
+    BOOST_CHECK_EQUAL(RockPaperScissors.Play('r', RockPaperScissors.ComputerInput()), true);
+    BOOST_CHECK_EQUAL(RockPaperScissors.Play('s', RockPaperScissors.ComputerInput()), true);
+    BOOST_CHECK_EQUAL(RockPaperScissors.Play('P', RockPaperScissors.ComputerInput()), false);
+    BOOST_CHECK_EQUAL(RockPaperScissors.Play('R', RockPaperScissors.ComputerInput()), false);
+    BOOST_CHECK_EQUAL(RockPaperScissors.Play('S', RockPaperScissors.ComputerInput()), false);
+    BOOST_CHECK_EQUAL(RockPaperScissors.Play('q', RockPaperScissors.ComputerInput()), false);
   }
 
   BOOST_AUTO_TEST_CASE(Test_Logic) {
