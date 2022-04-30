@@ -7,12 +7,12 @@
 class Game {
  private:
   std::string const Actions{"prs"};
-  std::unordered_map<char, std::string const> Names {
+  std::unordered_map<char, std::string const> names {
           {Actions[0], "Paper"   },
           {Actions[1], "Rock"    },
           {Actions[2], "Scissors"}
   };
-  std::unordered_map<char, std::unordered_map<char, std::function<void()>>> game{
+  std::unordered_map<char, std::unordered_map<char, std::function<void()>>> game {
     {Actions[0], {{Actions[0], [this]() -> void {Draw();      }},
                   {Actions[1], [this]() -> void {PlayerWins();}},
                   {Actions[2], [this]() -> void {CPUWins();   }}}},
@@ -25,11 +25,14 @@ class Game {
 
  public:
   size_t Draws{0}, CPU_wins{0}, Player_wins{0};
+  Game() {
+    srand(time(0));
+  }
 
   std::string Usage() {
-    std::string ret{};
+    std::string ret{""};
     for(char const& c : Actions) {
-      ret+="\'" + std::string{c} + "\' - " + Names[c] + "\n";
+      ret+="\'" + std::string{c} + "\' - " + names[c] + "\n";
     }
     return ret;
   }
@@ -39,7 +42,7 @@ class Game {
     if (iter1!=game.end()) {
       auto const iter2{iter1->second.find(computer_action)};
       if (iter2 != iter1->second.end()) {
-        std::cout << "You : " << Names[iter1->first] << "\tCPU : " << Names[iter2->first] << "\t--->\t";
+        std::cout << "You : " << names[iter1->first] << "\tCPU : " << names[iter2->first] << "\t--->\t";
         iter2->second();
         std::cout << std::endl;
         return true;

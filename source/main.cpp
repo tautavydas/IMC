@@ -1,8 +1,6 @@
 #include<Game.hpp>
 
 int main() {
-  srand(time(0));
-
   Game RockPaperScissors;
 
   std::string const Usage{RockPaperScissors.Usage() +
