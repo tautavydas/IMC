@@ -21,7 +21,8 @@ class Game {
                   {Actions[2], [this]() -> void {PlayerWins();}}}},
     {Actions[2], {{Actions[0], [this]() -> void {PlayerWins();}},
                   {Actions[1], [this]() -> void {CPUWins();   }},
-                  {Actions[2], [this]() -> void {Draw();      }}}}};
+                  {Actions[2], [this]() -> void {Draw();      }}}}
+  };
 
  public:
   size_t Draws{0}, CPU_wins{0}, Player_wins{0};
