@@ -33,9 +33,9 @@ class Game {
 
   std::string Usage() {
     std::string ret{""};
-    for(char const& c : Actions) {
+    for(char const& c : Actions)
       ret+="\'" + std::string{c} + "\' - " + names[c] + "\n";
-    }
+
     return ret;
   }
 
