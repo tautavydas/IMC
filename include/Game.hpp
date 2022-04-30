@@ -54,7 +54,7 @@ class Game final {
     return false;
   }
 
-  [[nodiscard]] char ComputerInput() const noexcept {
+  [[nodiscard]] char const& ComputerInput() const noexcept {
     return actions[rand() % actions.length()];
   }
 
