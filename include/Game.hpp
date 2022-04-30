@@ -8,9 +8,9 @@ class Game final {
  private:
   std::string const actions{"prs"};
   std::unordered_map<char, std::string const> names {
-          {actions[0], "Paper"   },
-          {actions[1], "Rock"    },
-          {actions[2], "Scissors"}
+    {actions[0], "Paper"   },
+    {actions[1], "Rock"    },
+    {actions[2], "Scissors"}
   };
   std::unordered_map<char, std::unordered_map<char, std::function<std::string()>>> game {
     {actions[0], {{actions[0], [this]() -> std::string {return Draw();      }},
@@ -41,7 +41,7 @@ class Game final {
     return ret;
   }
 
-  bool Play(char const player_action, char const computer_action) noexcept {
+  bool Play(char const& player_action, char const& computer_action) noexcept {
     auto const iter1{game.find(player_action)};
     if (iter1 != game.end()) {
       auto const iter2{iter1->second.find(computer_action)};
@@ -58,7 +58,7 @@ class Game final {
     return actions[rand() % actions.length()];
   }
 
-  [[nodiscard]] std::string DisplayMessage() const noexcept {
+  [[nodiscard]] std::string const& DisplayMessage() const noexcept {
     return message;
   };
 
