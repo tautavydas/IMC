@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <functional>
 
-class Game {
+class Game final {
  private:
   std::string const actions{"prs"};
   std::unordered_map<char, std::string const> names {
@@ -29,11 +29,11 @@ class Game {
  public:
   size_t Draws{0}, CPU_wins{0}, Player_wins{0};
 
-  Game() {
+  explicit Game() {
     srand(time(0));
   }
 
-  std::string Usage() {
+  [[nodiscard]] std::string Usage() noexcept {
     std::string ret{""};
     for(char const& c : actions)
       ret+="\'" + std::string{c} + "\' - " + names[c] + "\n";
@@ -41,7 +41,7 @@ class Game {
     return ret;
   }
 
-  bool Play(char const player_action, char const computer_action) {
+  bool Play(char const player_action, char const computer_action) noexcept {
     auto const iter1{game.find(player_action)};
     if (iter1 != game.end()) {
       auto const iter2{iter1->second.find(computer_action)};
@@ -53,30 +53,30 @@ class Game {
     return false;
   }
 
-  char ComputerInput() const {
+  [[nodiscard]] char ComputerInput() const noexcept {
     return actions[rand() % actions.length()];
   }
 
-  std::string DisplayMessage() const {
+  [[nodiscard]] std::string DisplayMessage() const noexcept {
     return message;
   };
 
-  std::string DisplayScore() const {
+  [[nodiscard]] std::string DisplayScore() const noexcept {
     return "Player wins\tComputer wins\tDraws\n" + std::to_string(Player_wins) + "\t\t" + std::to_string(CPU_wins) + "\t\t" + std::to_string(Draws);
   }
 
  private:
-  std::string Draw() {
+  [[nodiscard]] std::string Draw() noexcept {
     Draws++;
     return "Draw";
   }
 
-  std::string PlayerWins() {
+  [[nodiscard]] std::string PlayerWins() noexcept {
     Player_wins++;
     return "You win";
   }
 
-  std::string CPUWins() {
+  [[nodiscard]] std::string CPUWins() noexcept {
     CPU_wins++;
     return "CPU wins";
   }
