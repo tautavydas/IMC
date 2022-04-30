@@ -6,22 +6,22 @@
 
 class Game {
  private:
-  std::string const Actions{"prs"};
+  std::string const actions{"prs"};
   std::unordered_map<char, std::string const> names {
-          {Actions[0], "Paper"   },
-          {Actions[1], "Rock"    },
-          {Actions[2], "Scissors"}
+          {actions[0], "Paper"   },
+          {actions[1], "Rock"    },
+          {actions[2], "Scissors"}
   };
   std::unordered_map<char, std::unordered_map<char, std::function<void()>>> game {
-    {Actions[0], {{Actions[0], [this]() -> void {Draw();      }},
-                  {Actions[1], [this]() -> void {PlayerWins();}},
-                  {Actions[2], [this]() -> void {CPUWins();   }}}},
-    {Actions[1], {{Actions[0], [this]() -> void {CPUWins();   }},
-                  {Actions[1], [this]() -> void {Draw();      }},
-                  {Actions[2], [this]() -> void {PlayerWins();}}}},
-    {Actions[2], {{Actions[0], [this]() -> void {PlayerWins();}},
-                  {Actions[1], [this]() -> void {CPUWins();   }},
-                  {Actions[2], [this]() -> void {Draw();      }}}}
+    {actions[0], {{actions[0], [this]() -> void {Draw();      }},
+                  {actions[1], [this]() -> void {PlayerWins();}},
+                  {actions[2], [this]() -> void {CPUWins();   }}}},
+    {actions[1], {{actions[0], [this]() -> void {CPUWins();   }},
+                  {actions[1], [this]() -> void {Draw();      }},
+                  {actions[2], [this]() -> void {PlayerWins();}}}},
+    {actions[2], {{actions[0], [this]() -> void {PlayerWins();}},
+                  {actions[1], [this]() -> void {CPUWins();   }},
+                  {actions[2], [this]() -> void {Draw();      }}}}
   };
 
  public:
@@ -33,7 +33,7 @@ class Game {
 
   std::string Usage() {
     std::string ret{""};
-    for(char const& c : Actions)
+    for(char const& c : actions)
       ret+="\'" + std::string{c} + "\' - " + names[c] + "\n";
 
     return ret;
@@ -54,7 +54,7 @@ class Game {
   }
 
   char ComputerInput() const {
-    return Actions[rand() % Actions.length()];
+    return actions[rand() % actions.length()];
   }
 
   std::string DisplayScore() const {
