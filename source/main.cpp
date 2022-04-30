@@ -14,15 +14,15 @@ int main() {
       std::cin.ignore();
       std::cout << ">> ";
     } else {
-      std::string input;
-      std::cin >> input;
-      if (input.length()==1) {
-        if (RockPaperScissors.Play(input.c_str()[0], RockPaperScissors.ComputerAction())) {
-        } else if (input == "d") {
+      std::string player_input;
+      std::cin >> player_input;
+      if (player_input.length()==1) {
+        if (RockPaperScissors.Play(player_input[0], RockPaperScissors.ComputerAction())) {
+        } else if (player_input == "d") {
           RockPaperScissors.DisplayScore();
-        } else if (input == "h") {
+        } else if (player_input == "h") {
           std::cout << Usage << std::endl;
-        } else if (input == "q") {
+        } else if (player_input == "q") {
           RockPaperScissors.DisplayScore();
           break;
         } else {
