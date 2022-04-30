@@ -46,7 +46,7 @@ class Game {
     if (iter1 != game.end()) {
       auto const iter2{iter1->second.find(computer_action)};
       if (iter2 != iter1->second.end()) {
-        message="You : " + names[iter1->first] + "\tCPU : " + names[iter2->first] + "\t--->\t" + iter2->second();
+        message = "You : " + names[iter1->first] + "\tCPU : " + names[iter2->first] + "\t--->\t" + iter2->second();
         return true;
       } else std::cout << "Map key not found" << std::endl;
     }
