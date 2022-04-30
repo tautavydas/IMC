@@ -65,6 +65,12 @@ BOOST_AUTO_TEST_SUITE(Tests)
     BOOST_CHECK_EQUAL(RockPaperScissors.Draws, 3);
     BOOST_CHECK_EQUAL(RockPaperScissors.CPU_wins, 3);
     BOOST_CHECK_EQUAL(RockPaperScissors.Player_wins, 3);
+
+    // wrong inputs
+    RockPaperScissors.Play('w', 'q');
+    BOOST_CHECK_EQUAL(RockPaperScissors.Draws, 3);
+    BOOST_CHECK_EQUAL(RockPaperScissors.CPU_wins, 3);
+    BOOST_CHECK_EQUAL(RockPaperScissors.Player_wins, 3);
   }
 
 BOOST_AUTO_TEST_SUITE_END()
