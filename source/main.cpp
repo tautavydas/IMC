@@ -18,6 +18,7 @@ int main() {
       std::cin >> PlayerInput;
       if (PlayerInput.length() == 1) {
         if (RockPaperScissors.Play(PlayerInput[0], RockPaperScissors.ComputerInput())) {
+          std::cout << RockPaperScissors.DisplayMessage() << std::endl;
         } else if (PlayerInput == "d") {
           std::cout << RockPaperScissors.DisplayScore() << std::endl;
         } else if (PlayerInput == "h") {

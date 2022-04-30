@@ -12,17 +12,19 @@ class Game {
           {actions[1], "Rock"    },
           {actions[2], "Scissors"}
   };
-  std::unordered_map<char, std::unordered_map<char, std::function<void()>>> game {
-    {actions[0], {{actions[0], [this]() -> void {Draw();      }},
-                  {actions[1], [this]() -> void {PlayerWins();}},
-                  {actions[2], [this]() -> void {CPUWins();   }}}},
-    {actions[1], {{actions[0], [this]() -> void {CPUWins();   }},
-                  {actions[1], [this]() -> void {Draw();      }},
-                  {actions[2], [this]() -> void {PlayerWins();}}}},
-    {actions[2], {{actions[0], [this]() -> void {PlayerWins();}},
-                  {actions[1], [this]() -> void {CPUWins();   }},
-                  {actions[2], [this]() -> void {Draw();      }}}}
+  std::unordered_map<char, std::unordered_map<char, std::function<std::string()>>> game {
+    {actions[0], {{actions[0], [this]() -> std::string {return Draw();      }},
+                  {actions[1], [this]() -> std::string {return PlayerWins();}},
+                  {actions[2], [this]() -> std::string {return CPUWins();   }}}},
+    {actions[1], {{actions[0], [this]() -> std::string {return CPUWins();   }},
+                  {actions[1], [this]() -> std::string {return Draw();      }},
+                  {actions[2], [this]() -> std::string {return PlayerWins();}}}},
+    {actions[2], {{actions[0], [this]() -> std::string {return PlayerWins();}},
+                  {actions[1], [this]() -> std::string {return CPUWins();   }},
+                  {actions[2], [this]() -> std::string {return Draw();      }}}}
   };
+
+  std::string message;
 
  public:
   size_t Draws{0}, CPU_wins{0}, Player_wins{0};
@@ -44,9 +46,7 @@ class Game {
     if (iter1 != game.end()) {
       auto const iter2{iter1->second.find(computer_action)};
       if (iter2 != iter1->second.end()) {
-        std::cout << "You : " << names[iter1->first] << "\tCPU : " << names[iter2->first] << "\t--->\t";
-        iter2->second();
-        std::cout << std::endl;
+        message="You : " + names[iter1->first] + "\tCPU : " + names[iter2->first] + "\t--->\t" + iter2->second();
         return true;
       } else std::cout << "Map key not found" << std::endl;
     }
@@ -57,23 +57,27 @@ class Game {
     return actions[rand() % actions.length()];
   }
 
+  std::string DisplayMessage() const {
+    return message;
+  };
+
   std::string DisplayScore() const {
     return "Player wins\tComputer wins\tDraws\n" + std::to_string(Player_wins) + "\t\t" + std::to_string(CPU_wins) + "\t\t" + std::to_string(Draws);
   }
 
  private:
-  void Draw() {
-    std::cout << "Draw";
+  std::string Draw() {
     Draws++;
+    return "Draw";
   }
 
-  void PlayerWins() {
-    std::cout << "You win" ;
+  std::string PlayerWins() {
     Player_wins++;
+    return "You win";
   }
 
-  void CPUWins() {
-    std::cout << "CPU wins";
+  std::string CPUWins() {
     CPU_wins++;
+    return "CPU wins";
   }
 };
